@@ -1,2 +1,3 @@
-# sidhulabs-py
-Python utility functions
+# SidhuLabs Python
+
+Python utility functions for Sidhulabs
