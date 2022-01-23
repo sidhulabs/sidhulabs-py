@@ -57,7 +57,7 @@ jobs:
         poetry version $(date +%Y.%m.%d.%H.%M)
     - name: Publish
       run: |
-        poetry publish -u {{ secrets.PYPI_USER }} -p '{{ secrets.PYPI_PASSWORD }}' --build
+        poetry publish -u '{{ secrets.PYPI_USER }}' -p '{{ secrets.PYPI_PASSWORD }}' --build
     - name: Commit and Push updated pyproject.toml
       run: |
         git config --global user.name "Github Action"
