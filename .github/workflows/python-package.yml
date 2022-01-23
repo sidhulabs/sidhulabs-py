@@ -29,7 +29,6 @@ jobs:
       run: |
         poetry run black --check --config=./pyproject.toml .
         poetry run isort --check --diff .
-    - name: Test with pytest
 
   build:
     runs-on: ubuntu-latest
