@@ -10,6 +10,11 @@ elasticsearch = "<8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
+isort = "5.10.1"
+black = "21.11.b1"
+
+[tool.black]
+line-length = 120
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
