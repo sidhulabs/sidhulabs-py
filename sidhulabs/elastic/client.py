@@ -28,7 +28,7 @@ def get_elastic_client(
     Examples
     --------
     >>> from sidhulabs.elastic.client import get_elastic_client
-    >>> es_client = get_elastic_client("http://localhost:9200")
+    >>> es_client = get_elastic_client("https://elastic.sidhulabs.ca")
     """
 
     assert api_id is not None, "Pass in Elastic API ID to function or set env var ELASTIC_API_ID"
