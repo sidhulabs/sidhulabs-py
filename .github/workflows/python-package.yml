@@ -4,9 +4,6 @@
 name: Build & Deploy
 on:
   push:
-    paths-ignore:
-      - "*.md"
-      - ".gitignore"
     branches: [ main ]
 
 jobs:
