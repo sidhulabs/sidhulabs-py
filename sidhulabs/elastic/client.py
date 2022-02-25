@@ -4,7 +4,11 @@ from elasticsearch import Elasticsearch
 
 
 def get_elastic_client(
-    url: str, api_id: str = os.environ.get("ELASTIC_API_ID"), api_key: str = os.environ.get("ELASTIC_API_KEY"), **kwargs
+    url: str,
+    api_id: str = os.environ.get("ELASTIC_API_ID"),
+    api_key: str = os.environ.get("ELASTIC_API_KEY"),
+    no_creds: bool = False,
+    **kwargs
 ):
     """
     Returns an Elasticsearch client using api credentials.
@@ -19,6 +23,9 @@ def get_elastic_client(
         Elastic API ID, by default os.environ.get("ELASTIC_API_ID")
     api_key : str, optional
         Elastic API Key, by default os.environ.get("ELASTIC_API_KEY")
+    no_creds : bool, optional
+        If True, will connect to an Elasticsearch instance with no creds.
+        This is useful for connecting to a local instance of Elasticsearch.
 
     Returns
     -------
@@ -30,6 +37,11 @@ def get_elastic_client(
     >>> from sidhulabs.elastic.client import get_elastic_client
     >>> es_client = get_elastic_client("https://elastic.sidhulabs.ca:443")
     """
+
+    # For test clusters / local instances of Elasticsearch spun up
+    # with a docker container.
+    if no_creds:
+        return Elasticsearch(hosts=[url], **kwargs)
 
     assert api_id is not None, "Pass in Elastic API ID to function or set env var ELASTIC_API_ID"
     assert api_key is not None, "Pass in Elastic API KEY to function or set env var ELASTIC_API_KEY"
