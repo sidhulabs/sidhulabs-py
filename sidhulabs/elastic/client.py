@@ -1,6 +1,7 @@
 import os
 
 from elasticsearch import Elasticsearch
+from loguru import logger
 
 
 def get_elastic_client(
@@ -47,3 +48,25 @@ def get_elastic_client(
     assert api_key is not None, "Pass in Elastic API KEY to function or set env var ELASTIC_API_KEY"
 
     return Elasticsearch(hosts=[url], api_key=(api_id, api_key), **kwargs)
+
+
+def test_connection(es_client):
+    """
+    Test connection to Elasticsearch instance.
+
+    Parameters
+    ----------
+    es_client : Elasticsearch
+        Elasticsearch client.
+
+    Returns
+    -------
+    bool
+        True if connection is successful.
+    """
+    try:
+        es_client.info()
+        return True
+    except Exception as e:
+        logger.error(e)
+        return False
