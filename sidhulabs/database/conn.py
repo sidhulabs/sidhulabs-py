@@ -258,7 +258,7 @@ class DataBaseConn(object):
                 return engine
             except Exception as e:
                 if attempts < MAX_RETRY_COUNT:
-                    sleep_duration = 0.1 * ((2 ** attempts) - 1)
+                    sleep_duration = 0.1 * ((2**attempts) - 1)
                     logger.warning(
                         "SQLAlchemy engine could not be created. The following exception is caught.\n"
                         f"{e}\nOperation will be retried in {sleep_duration:.1f} seconds",
