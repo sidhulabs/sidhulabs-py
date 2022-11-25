@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sidhulabs"
-version = "2022.02.25.22.58"
+version = "2022.11.25.06.56"
 description = "Common Python utility functions"
 authors = ["Ashton Sidhu <ashton.sidhu1994@gmail.com>"]
 
