@@ -22,7 +22,7 @@ def db(mock_db_uri) -> DataBaseConn:
 
 @pytest.fixture
 def create_table(db: DataBaseConn):
-    stmt = "CREATE TABLE test(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL);"
+    stmt = "CREATE TABLE test(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL);"  # noqa: E501
     db.execute(stmt)
     yield
     stmt = "DROP TABLE test;"
@@ -76,7 +76,7 @@ def test_insert_from_dict_table(db: DataBaseConn, create_table):
 
 
 def test_insert_from_dict_table_create(db: DataBaseConn):
-    """Test inserting data from a dict using SqlAlchemy table but table does not exist."""
+    """Test inserting data from a dict using SqlAlchemy table but table does not exist."""  # noqa: E501
 
     class MockTable(Base):
         __tablename__ = "mocktable"
@@ -94,7 +94,7 @@ def test_insert_from_dict_table_create(db: DataBaseConn):
 
 
 def test_insert_from_dict_table_error(db: DataBaseConn):
-    """Test inserting data from a dict not using SqlAlchemy table but table does not exist."""
+    """Test inserting data from a dict not using SqlAlchemy table but table does not exist."""  # noqa: E501
     data = {"mock": "foobar"}
 
     with pytest.raises(ValueError):
